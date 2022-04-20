@@ -21,6 +21,7 @@
     <label>Certification</label>
     <navType>Standard</navType>
     <tabs>standard-home</tabs>
+    <tabs>Deliveries_Map</tabs>
     <tabs>AwInstructors</tabs>
     <tabs>standard-Account</tabs>
     <tabs>standard-Contact</tabs>

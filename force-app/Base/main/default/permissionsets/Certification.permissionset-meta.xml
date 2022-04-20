@@ -260,6 +260,10 @@
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>
+        <tab>Deliveries_Map</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
         <tab>TripReport__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>
