@@ -38,4 +38,27 @@ export default class StudentBrowser extends LightningElement {
 	updateSelectedStudent(studentId) {
 		publish(this.messageContext, SELECTED_STUDENT_CHANNEL, {studentId: studentId});
 	}
+	
+	cols = [
+		{
+		fieldName:"Name",
+		label: "Name"
+		},
+		{
+		fieldName:"Title",
+		label: "Title",
+		hiddenOnMobile: true
+		},
+		{
+		fieldName:"Phone",
+		label: "Phone",
+		type: "phone"
+		},
+		{
+		fieldName:"Email",
+		label: "E-Mail",
+		type: "email"
+		}
+		];
+
 }
