@@ -5,6 +5,8 @@ public with sharing class StudentBrowserForm {
 		return [SELECT Id, Name FROM User WHERE Is_Instructor__c = true ORDER BY Name];
     }
 
+	
+
     @AuraEnabled(cacheable=true)
     public static List<Course_Delivery__c> getDeliveriesByInstructor(String instructorId ) {
         
