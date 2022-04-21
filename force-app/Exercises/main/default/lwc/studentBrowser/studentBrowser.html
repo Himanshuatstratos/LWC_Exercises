@@ -2,15 +2,17 @@
     <c-student-browser-form onfilterchange={handleFilterChange} ></c-student-browser-form>
     
     <lightning-tabset variant="scoped">
-        <lightning-tab label="Grid">
-            <div class="slds-scrollable scrollerSize" >
-                <c-responsive-datatable pk-field="Id" column-config={cols} row-data={students.data} onrowclick={handleRowClick} onrowdblclick={handleRowDblClick}></c-responsive-datatable>
-                </div>
-        </lightning-tab>
+
         <lightning-tab label="Gallery">
             <div class="slds-scrollable scrollerSize" >
             <c-student-tiles onstudentselected={handleStudentSelected} student-list={students.data}> </c-student-tiles>
         </div>    
+        </lightning-tab>
+
+        <lightning-tab label="Grid">
+            <div class="slds-scrollable scrollerSize" >
+                <c-responsive-datatable pk-field="Id" column-config={cols} row-data={students.data} onrowclick={handleRowClick} onrowdblclick={handleRowDblClick}></c-responsive-datatable>
+                </div>
         </lightning-tab>
     </lightning-tabset>
     

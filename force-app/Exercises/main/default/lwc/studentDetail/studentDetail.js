@@ -2,10 +2,12 @@ import { LightningElement, wire } from "lwc";
 import { subscribe, unsubscribe, MessageContext } from "lightning/messageService";
 import SELECTED_STUDENT_CHANNEL from "@salesforce/messageChannel/SelectedStudentChannel__c";
 import { NavigationMixin } from 'lightning/navigation';
+import Utils from 'c/utils';
+
 
 // TODO #1: import the reduceErrors function from the c/ldsUtils component.
 import { reduceErrors } from "c/ldsUtils";
-import { getRecord, getFieldValue, getFieldDisplayValue } from "lightning/uiRecordApi";
+import { getRecord,getFieldValue, getFieldDisplayValue } from "lightning/uiRecordApi";
 
 // TODO #2: import the getRecord, getFieldValue, and getFieldDisplayValue functions from lightning/uiRecordApi.
 import FIELD_Name from "@salesforce/schema/Contact.Name";
@@ -62,11 +64,11 @@ export default class StudentDetail extends NavigationMixin(LightningElement ) {
 		}
 		return title;
 	}
-
+	
 	_getDisplayValue(data, field) {
 		return getFieldDisplayValue(data, field) ? getFieldDisplayValue(data, field) : getFieldValue(data, field);
 	}
-
+	
 	connectedCallback() {
 		if (this.subscription) {
 			return;
