@@ -5,6 +5,15 @@ export default class ResponsiveDatatable extends LightningElement {
 	@api pkField;
 	rows;
 	_selectedRow;
+
+	@api setSelectedRecord(recordId) {
+		const mySelector = `tr[data-pk='${recordId}']`;
+		const selectedRow = this.template.querySelector(mySelector);
+		if (selectedRow) {
+			this.highlightSelectedRow(selectedRow);
+		}
+	}
+
 	onRowClick(event) {
 		const target = event.currentTarget;
 		const evt = new CustomEvent( 'rowclick' , { detail: { pk: target.getAttribute('data-pk') } });
