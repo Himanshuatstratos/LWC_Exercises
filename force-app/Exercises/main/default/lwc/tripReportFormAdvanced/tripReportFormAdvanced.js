@@ -122,6 +122,15 @@ export default class TripReportFormAdvanced extends LightningElement {
     onBlur() {
         this.saveButtonDisabled = !this.validateFields();
     }
+
+    returnToBrowseMode() {
+        const evt = new CustomEvent('tripreportmodechange', { detail: { mode: "browse"},  });
+        this.dispatchEvent(evt);
+    }
+
+    onCancel() {
+        this.returnToBrowseMode();
+        }
 	saveTripReport() {
 		const fieldsToSave = {};
 		fieldsToSave[FIELD_DATE.fieldApiName] = this.dateVisited;
@@ -143,6 +152,7 @@ export default class TripReportFormAdvanced extends LightningElement {
 					//TODO #7: after record creation, store the new ID of the trip report in our recordId property
                     this.recordId = tripReport.id;
 					Utils.showToast(this, "Success", "Trip Report Created", "success");
+                    this.returnToBrowseMode();
 				})
 				.catch((error) => {
 					let errors = reduceErrors(error);
@@ -154,9 +164,12 @@ export default class TripReportFormAdvanced extends LightningElement {
 			//so that the system knows which record to update
             fieldsToSave[FIELD_ID.fieldApiName] = this.recordId;
 			const recordInput = { fields: fieldsToSave };
+
+            
 			updateRecord(recordInput)
 				.then(() => {
 					Utils.showToast(this, "Success", "Trip report updated", "success");
+                    this.returnToBrowseMode();
 				})
 				.catch((error) => {
 					let errors = reduceErrors(error);

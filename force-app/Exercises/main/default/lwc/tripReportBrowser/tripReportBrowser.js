@@ -25,8 +25,30 @@ export default class TripReportBrowser extends LightningElement {
 			label: 'Rating'
 		}
 	];
-
+	selectedRecordId = 0;
 	tripReports;
+	changeTripReportMode(newMode) {
+		const eventDetail = { mode: newMode}
+		if (newMode === 'edit') {
+			eventDetail.Id = this.selectedRecordId;
+		}
+		console.log('inside changeTripreportMode method');
+		const evt = new CustomEvent('tripreportmodechange', { detail: eventDetail });
+			this.dispatchEvent(evt);
+	}
+
+	handleRowClick(event) {
+		this.selectedRecordId = event.detail.pk;
+	}
+
+	handleRowDblClick() {
+		this.changeTripReportMode('edit');
+	}
+
+	onBtnNewClick() {
+		console.log('clicked on new');
+		this.changeTripReportMode('add');
+	}
 
 	connectedCallback() {
 		getAll()
