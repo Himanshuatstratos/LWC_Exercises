@@ -36,6 +36,9 @@ export default class TripReportBrowser extends LightningElement {
 		const evt = new CustomEvent('tripreportmodechange', { detail: eventDetail });
 			this.dispatchEvent(evt);
 	}
+	onBtnEditClick() {
+		this.changeTripReportMode('edit');
+		}
 
 	handleRowClick(event) {
 		this.selectedRecordId = event.detail.pk;
